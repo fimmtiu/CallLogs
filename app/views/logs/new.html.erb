@@ -1,0 +1,24 @@
+<%= form_for @log do |f| %>
+  <table id="new-log-table">
+    <tr>
+      <th>User</th>
+      <td><%= f.select :user_id, User.all.map { |u| [u.name, u.id] } %></td>
+    </tr>
+    <tr>
+      <th>Customer</th>
+      <td><%= f.select :customer_id, Customer.all.map { |c| [c.name, c.id] } %></td>
+    </tr>
+    <tr>
+      <th>Duration</th>
+      <td><%= f.text_field :duration %> (in seconds)</td>
+    </tr>
+    <tr>
+      <th>Summary</th>
+      <td><%= f.text_area :summary %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= f.submit %></td>
+    </tr>
+  </table>
+<% end %>

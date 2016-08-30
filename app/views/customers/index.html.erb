@@ -1,0 +1,26 @@
+<h1>Customers</h1>
+
+<%= link_to "Create new customer", new_customer_path %>
+
+<table id="customers-table">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Account Type</th>
+    <th># of Calls</th>
+    <th></th>
+  </tr>
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%= customer.name %></td>
+    <td><%= customer.email %></td>
+    <td><%= customer.account_type %></td>
+    <td><%= customer.number_of_calls %></td>
+      <!-- SQL: SELECT COUNT(*) FROM logs WHERE logs.customer_id = ? -->
+    <td>
+      <%= link_to "Edit", edit_customer_path(customer) %> |
+      <%= link_to "Delete", customer_path(customer), method: :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>

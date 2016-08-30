@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Call Logging App</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="top">
+    <h1>Call Logging App</h1>
+    <a href="/">Dashboard</a>
+    <a href="/logs">Call Logs</a>
+    <a href="/customers">Customers</a>
+  </div>
+
+  </div>
+
+  <div class="content">
+    <%= yield %>
+  </div>
+
+</body>
+</html>
