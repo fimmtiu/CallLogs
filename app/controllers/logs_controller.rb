@@ -18,8 +18,8 @@ class LogsController < ApplicationController
       # SQL: INSERT INTO logs (user_id, customer_id, summary, duration, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
       flash[:notice] = "Logged call for #{@log.customer.name}"
       # SQL: SELECT * FROM customers WHERE customers.id = ? LIMIT 1
-    else
       redirect_to logs_path, id: @log.id
+    else
       errors = @log.errors.full_messages.to_sentence
       flash[:alert] = "Failed to log call for #{@log.customer.name}: #{errors}"
       # SQL: SELECT * FROM customers WHERE customers.id = ? LIMIT 1

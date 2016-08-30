@@ -15,7 +15,7 @@ class Customer < ActiveRecord::Base
   end
 
   def average_call_length
-    logs.pluck(:duration).sum / number_of_calls
+    logs.all.map(&:duration).sum / number_of_calls
     # SQL: SELECT logs.duration FROM logs WHERE logs.customer_id = ?
   end
 end

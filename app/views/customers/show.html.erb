@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <th>Average Call Length</th>
-    <td><%= @customer.average_call_length %></td>
+    <td><%= seconds_to_hms(@customer.average_call_length) %></td>
   </tr>
 </table>
 

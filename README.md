@@ -37,4 +37,7 @@ app/views/dashboard/index.html.erb
 ```
 
 If you want to log in and try it out, run `rake db:seed`, then log in as
-`demo@goclio.com` with the password `testtest`.
+`demo@goclio.com` with the password `testtest`. (And if you'd like to
+generate an egregiously large data set to test with, pass `HUGE=1` as an
+environment variable to `rake db:seed` -- beware, though, it'll be very
+slow.)
