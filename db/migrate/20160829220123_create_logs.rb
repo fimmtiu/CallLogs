@@ -2,13 +2,13 @@ class CreateLogs < ActiveRecord::Migration
   def up
     execute(<<-SQL
       CREATE TABLE "logs" (
-        "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        "id" SERIAL PRIMARY KEY NOT NULL,
         "user_id" INTEGER,
         "customer_id" INTEGER,
         "summary" TEXT,
         "duration" INTEGER,
-        "created_at" DATETIME,
-        "updated_at" DATETIME
+        "created_at" TIMESTAMP,
+        "updated_at" TIMESTAMP
       )
       SQL
     )
