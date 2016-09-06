@@ -8,8 +8,8 @@ records its duration and a summary of the discussion.
 This is a sample Rails app which implements such a system. It's not very
 pretty, and not very complete, but it gets the job done. Unfortunately,
 it's got some problems with how it uses the database. Have a look at the
-schema and the code; see if you can figure out where this app might run
-into trouble if it had hundreds of thousands of customers and millions of
+schema and the code; **see if you can figure out where this app might run
+into trouble** if it had hundreds of thousands of customers and millions of
 call logs.
 
 It's okay if you're not familiar with Ruby! We've put comments next to all
@@ -36,8 +36,7 @@ app/views/logs/index.html.erb
 app/views/dashboard/index.html.erb
 ```
 
-If you want to log in and try it out, run `rake db:seed`, then log in as
-`demo@goclio.com` with the password `testtest`. (And if you'd like to
-generate an egregiously large data set to test with, pass `HUGE=1` as an
-environment variable to `rake db:seed` -- beware, though, it'll be very
-slow.)
+If you want to try it out, log in as `demo@goclio.com` with the password
+`testtest`. (And if you'd like to generate an egregiously large data set to
+test with, pass `HUGE=1` as an environment variable to `rake db:seed` --
+beware, though, it'll be very slow.)

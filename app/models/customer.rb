@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
 
   # A customer has one log for every time they've called in. If the
   # customer is deleted, their logs are also deleted.
+  # (Data retention? What's that?)
   has_many :logs, dependent: :destroy
 
   validates :account_type, inclusion: {in: ACCOUNT_TYPES}
@@ -16,6 +17,6 @@ class Customer < ActiveRecord::Base
 
   def average_call_length
     logs.all.map(&:duration).sum / number_of_calls
-    # SQL: SELECT logs.duration FROM logs WHERE logs.customer_id = ?
+    # SQL: SELECT * FROM logs WHERE logs.customer_id = ?
   end
 end
