@@ -1,6 +1,4 @@
 class Log < ActiveRecord::Base
-  include ActionView::Helpers::DateHelper
-
   belongs_to :user
   belongs_to :customer
 

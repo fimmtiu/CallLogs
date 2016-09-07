@@ -12,7 +12,7 @@
   </tr>
 <% @customers.each do |customer| %>
   <tr>
-    <td><%= customer.name %></td>
+    <td><%= link_to customer.name, customer_path(customer) %></td>
     <td><%= customer.email %></td>
     <td><%= customer.account_type %></td>
     <td><%= customer.number_of_calls %></td>
