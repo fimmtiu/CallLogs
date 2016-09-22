@@ -1,0 +1,26 @@
+<table id="customer-table">
+  <tr>
+    <th>Name</th>
+    <td><%= @customer.name %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= @customer.email %></td>
+  </tr>
+  <tr>
+    <th>Account Type</th>
+    <td><%= @customer.account_type %></td>
+  </tr>
+  <tr>
+    <th># of Calls</th>
+    <td><%= @customer.number_of_calls %></td>
+  </tr>
+  <tr>
+    <th>Average Call Length</th>
+    <td><%= seconds_to_hms(@customer.average_call_length) %></td>
+  </tr>
+</table>
+
+<%= link_to "Edit", edit_customer_path(@customer) %><br/>
+<%= link_to "Delete", customer_path(@customer), method: :delete %><br/>
+<%= link_to "Back to index", customers_path %>
