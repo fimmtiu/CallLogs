@@ -8,7 +8,7 @@
     <th>Customer</th>
     <th>Created at</th>
     <th>Duration</th>
-    <th>Summary</th>
+    <th>Notes</th>
   </tr>
 <% @logs.each do |log| %>
   <tr>
@@ -18,7 +18,7 @@
       <!-- SQL: SELECT * FROM customers WHERE customers.id = ? LIMIT 1 -->
     <td><%= log.created_at %></td>
     <td><%= seconds_to_hms(log.duration) %></td>
-    <td><%= log.summary %></td>
+    <td><%= log.notes %></td>
   </tr>
 <% end %>
 </table>

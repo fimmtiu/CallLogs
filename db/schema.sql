@@ -30,7 +30,7 @@ CREATE TABLE "logs" (
         "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         "user_id" INTEGER,
         "customer_id" INTEGER,
-        "summary" TEXT,
+        "notes" TEXT,
         "duration" INTEGER,
         "created_at" DATETIME,
         "updated_at" DATETIME

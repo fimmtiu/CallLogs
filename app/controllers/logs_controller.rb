@@ -15,7 +15,7 @@ class LogsController < ApplicationController
   def create
     @log = Log.new(log_params)
     if @log.save
-      # SQL: INSERT INTO logs (user_id, customer_id, summary, duration, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
+      # SQL: INSERT INTO logs (user_id, customer_id, notes, duration, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
       flash[:notice] = "Logged call for #{@log.customer.name}"
       # SQL: SELECT * FROM customers WHERE customers.id = ? LIMIT 1
       redirect_to logs_path, id: @log.id
@@ -33,6 +33,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:user_id, :customer_id, :summary, :duration)
+    params.require(:log).permit(:user_id, :customer_id, :notes, :duration)
   end
 end

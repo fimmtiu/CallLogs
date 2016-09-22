@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160829220123) do
   create_table "logs", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "customer_id"
-    t.text     "summary"
+    t.text     "notes"
     t.integer  "duration"
     t.datetime "created_at"
     t.datetime "updated_at"

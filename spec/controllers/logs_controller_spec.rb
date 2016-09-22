@@ -9,7 +9,7 @@ describe LogsController do
     {log: {
       user_id: user.id,
       customer_id: customer.id,
-      summary: "Argle bargle blorf wugga wugga zot.",
+      notes: "Argle bargle blorf wugga wugga zot.",
       duration: 165}
     }
   end

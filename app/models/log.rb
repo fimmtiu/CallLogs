@@ -4,6 +4,6 @@ class Log < ActiveRecord::Base
 
   validates :user, presence: true
   validates :customer, presence: true
-  validates :summary, length: {minimum: 1}
+  validates :notes, length: {minimum: 1}
   validates :duration, numericality: {greater_than: 0, only_integer: true}
 end
