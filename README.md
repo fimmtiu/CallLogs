@@ -36,7 +36,14 @@ app/views/logs/index.html.erb
 app/views/dashboard/index.html.erb
 ```
 
-If you want to try it out, log in as `demo@goclio.com` with the password
-`testtest`. (And if you'd like to generate an egregiously large data set to
-test with, pass `HUGE=1` as an environment variable to `rake db:seed` --
-beware, though, it'll be very slow.)
+Try the app out yourself! https://clio-call-logs.herokuapp.com/
+* Login: demo@goclio.com
+* Password: testtest
+
+(If the Heroku app has an empty dashboard, you'll want to reseed the
+database with `heroku pg:reset DATABASE && heroku run rake db:migrate
+db:seed`.)
+
+If you'd like to generate an egregiously large data set locally to test
+with, pass `HUGE=1` as an environment variable to `rake db:seed` -- beware,
+though, it'll be very slow. (And don't try it on Heroku!)
