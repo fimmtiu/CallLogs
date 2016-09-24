@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e   # Die on error.
+set -x   # Echo executed commands.
+
+# This is a fake host defined in my .ssh/config:
+#
+#    Host cliosockpuppet.github.com
+#        HostName github.com
+#        User git
+#        IdentityFile ~/.ssh/id_rsa_cliosockpuppet
+#
+GITHUB_HOST=cliosockpuppet.github.com
+GITHUB_USER=cliosockpuppet
+GITHUB_EMAIL=dennis.taylor+cliosockpuppet@clio.com
+
+RELEVANT_FILES="app/controllers/*.rb \
+                app/models/*.rb \
+                app/views/*/index.html.erb \
+                app/views/customers/show.html.erb \
+                app/helpers/application_helper.rb \
+                db/migrate/* \
+                db/schema.*"
+
+# # Re-seed the database.
+# heroku pg:reset --confirm clio-call-logs DATABASE
+# heroku run rake db:migrate db:seed
+
+# Idempotency for fun and profit!
+if git remote | grep $GITHUB_USER; then
+  git remote rm $GITHUB_USER
+fi
+rm -rf CallLogs
+
+# Create the temporary repository
+HOME=/tmp hub fork
+HOME=/tmp hub clone $GITHUB_USER/CallLogs
+
+# Configure it to use the right SSH key.
+cd CallLogs
+git config user.name $GITHUB_USER
+git config user.email $GITHUB_EMAIL
+perl -wpi -e "s/github.com/$GITHUB_HOST/" .git/config
+
+# Create the branch with the relevant files removed.
+git checkout master
+git checkout -b empty-branch
+git rm -f $RELEVANT_FILES
+git add -A
+git commit -m "Remove the relevant files."
+git push origin empty-branch
+
+# Create another branch with _that_ commit removed.
+git checkout -b complete-branch
+git revert --no-edit HEAD
+git push origin complete-branch
+
+# Create a pull request between those two branches.
+hub pull-request -b empty-branch -h complete-branch -m "Performance code review"
+
+echo "Don't forget to delete the repository when you're done!"
