@@ -20,7 +20,7 @@ RELEVANT_FILES="app/controllers/*.rb \
                 app/views/customers/show.html.erb \
                 app/helpers/application_helper.rb \
                 db/migrate/* \
-                db/schema.*"
+                db/schema.sql"
 
 # # Re-seed the database.
 # heroku pg:reset --confirm clio-call-logs DATABASE
@@ -35,6 +35,14 @@ rm -rf CallLogs
 # Create the temporary repository
 HOME=/tmp hub fork
 HOME=/tmp hub clone $GITHUB_USER/CallLogs
+
+# FIXME: If you get "permission denied" issues on OS X when pushing a
+# branch, special measures are called for. Until I figure out why git has
+# stopped sending the correct credentials here, you have to uncomment this
+# line and use the sleep time to add yourself as a collaborator to the new
+# project through the Github project settings page. WTF?
+
+# sleep 120
 
 # Configure it to use the right SSH key.
 cd CallLogs
