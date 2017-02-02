@@ -23,8 +23,8 @@ RELEVANT_FILES="app/controllers/*.rb \
                 db/schema.sql"
 
 # # Re-seed the database.
-# heroku pg:reset --confirm clio-call-logs DATABASE
-# heroku run rake db:migrate db:seed
+heroku pg:reset --confirm clio-call-logs DATABASE
+heroku run rake db:migrate db:seed
 
 # Idempotency for fun and profit!
 if git remote | grep $GITHUB_USER; then

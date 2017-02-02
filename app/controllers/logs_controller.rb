@@ -27,8 +27,7 @@ class LogsController < ApplicationController
     end
   end
 
-  # We didn't bother with edit or delete functionality for the logs;
-  # consider it an exercise for the reader.
+  # We didn't bother adding the edit & delete functionality for the logs.
 
   private
 
