@@ -14,12 +14,13 @@ GITHUB_HOST=cliosockpuppet.github.com
 GITHUB_USER=cliosockpuppet
 GITHUB_EMAIL=dennis.taylor+cliosockpuppet@clio.com
 
-RELEVANT_FILES="app/controllers/*.rb \
+RELEVANT_FILES="app/controllers/customers_controller.rb \
+                app/controllers/dashboard_controller.rb \
+                app/controllers/logs_controller.rb \
                 app/models/*.rb \
                 app/views/*/index.html.erb \
                 app/views/customers/show.html.erb \
                 app/helpers/application_helper.rb \
-                db/migrate/* \
                 db/schema.sql"
 
 # # Re-seed the database.
